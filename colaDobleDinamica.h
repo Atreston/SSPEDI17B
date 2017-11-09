@@ -21,6 +21,7 @@ public:
 	int llena( );
 	void encolar( Dato );
 	Dato desencolar( );
+	void eliminarNodo( int pos );
 };
 
 template <class Dato>
@@ -57,7 +58,7 @@ Dato Cola<Dato>::desencolar( ){
 	else{
 		
 		d = this->getDato( frente );
-		this->eliminarPrimero( );
+		eliminarNodo( frente );
 		if( frente == fin ){
 			frente = -1;
 			fin = -1;
@@ -65,5 +66,11 @@ Dato Cola<Dato>::desencolar( ){
 			frente = ( frente + 1 ) % MAX;
 		return d;
 	}
+}
+
+template <class Dato>
+void Cola<Dato>::eliminarNodo( int pos ){
+	Nodo<Dato> *actual = this->posicion( pos );
+	delete &actual->dato;
 }
 #endif

@@ -19,8 +19,8 @@ public:
 	Nodo * der;
 	Nodo * izq;
 	Nodo( ){
-		der = nullptr;
 		izq = nullptr;
+		der = nullptr;
 	}
 	Nodo( T d ){
 		dato = d;
