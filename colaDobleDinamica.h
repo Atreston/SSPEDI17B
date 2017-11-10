@@ -42,15 +42,13 @@ bool Cola<Dato>::vacia( ){
 template <class Dato>
 void Cola<Dato>::encolar( Dato d ){
 	if( !llena( ) ){
-	    Nodo<Dato> *actual = new Nodo<Dato>( d );
+	    this->agregar_final( d );
 
-		if( vacia() ){
-            frente = actual;
-            fin = actual;
+		if( this->getLongitud() == 1 ){
+            frente = this->primer();
+            fin = this->primer();
 		}else{
-		    actual->izq = fin;
-		    actual->der = frente;
-		    fin = actual;
+		    fin = this->ultimo();
 		}
 	}
 }
@@ -58,14 +56,14 @@ void Cola<Dato>::encolar( Dato d ){
 template <class Dato>
 Dato Cola<Dato>::desencolar( ){
 	Dato d;
-
 	if( vacia( ) ) return d;
 	else{
 	    Nodo<Dato> *tmp = frente;
 		d = frente->dato;
 		frente = frente->der;
 		fin->der = frente;
-        delete tmp;
+		this->eliminarDato( this->getLongitud() - 1);
+        return d;
 	}
 }
 #endif
