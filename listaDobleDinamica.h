@@ -3,7 +3,7 @@
 //	i5887 - Sem. de Sol. de Estructura de Datos
 //	D13
 //	2017B
-//	
+//
 
 
 #ifndef LISTASD_H
@@ -19,8 +19,8 @@ public:
 	Nodo * der;
 	Nodo * izq;
 	Nodo( ){
-		der = nullptr;
 		izq = nullptr;
+		der = nullptr;
 	}
 	Nodo( T d ){
 		dato = d;
@@ -49,7 +49,7 @@ class Lista
 		void ordenarBurbuja( );
 		void quicksort( int, int );
 		int busquedaLineal( T clave );
-		int busquedaBinaria( T clave, int Iabajo, int Iarriba ); 
+		int busquedaBinaria( T clave, int Iabajo, int Iarriba );
 		Nodo<T>* operator[]( unsigned int pos );
 	private:
 		Nodo<T> *primero;
@@ -90,7 +90,7 @@ template <class T>
 Nodo<T>* Lista<T>::primer( ){
 	if( !vacia( ) ){
 		return primero;
-	}else	
+	}else
 		return nullptr;
 }
 
@@ -171,7 +171,7 @@ bool Lista<T>::eliminarDato( int pos ){
 	//validar si pos esta en el rango
 	//recorrer el arreglo desde pos hasta indice
 	//decrementar indice
-	
+
 	if( !vacia( ) && pos < indice ){
 		if( indice == 1 ){
 			delete primero;
@@ -206,7 +206,7 @@ void Lista<T>::intercambio(unsigned int pos_a, unsigned int pos_b ){
 		b_anterior->der = a;						//	solo si b no es el primero
 	if( b_siguiente != nullptr )
 		b_siguiente->izq = a;						//	solo si b no es el ultimo
-	
+
 		b->izq = a_anterior;
 		b->der = a_siguiente;
 		a->izq = b_anterior;
@@ -217,12 +217,12 @@ template <class T>
 void Lista<T>::ordenarBurbuja( ){
 	int i, j;
 	if( indice > 1 ){
-		for( i = 0; i < indice - 1; i++ ){ 
+		for( i = 0; i < indice - 1; i++ ){
 			for( j = 0; j < (indice - 1) - i; j++ ){
 				if( posicion(j)->dato > posicion(j+1)->dato ){
 					intercambio( j, j+1 );
-				} 
-			} 
+				}
+			}
 		}
 	}
 }
@@ -231,11 +231,11 @@ template <class T>
 void Lista<T>::quicksort( int aba, int arr ){
 	T a, temp;
 	int abajo, arriba;
-	
+
 	a       = posicion(aba)->dato;
 	arriba  = arr;
 	abajo   = aba;
-	
+
 	while( abajo <= arriba){
 		while( posicion(abajo)->dato < a )
 			abajo++;
